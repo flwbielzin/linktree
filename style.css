@@ -15,7 +15,7 @@
 }
 
 body {
-  background: transparent;
+  background: var(--primary-color);
   color: var(--text-color);
   font-family: "Inter", sans-serif;
   min-height: 100vh;
@@ -27,8 +27,10 @@ body {
 
 /* Modo claro */
 body.light {
+  --primary-color: #f5f5f5;
   --text-color: #1a1a1a;
   --text-secondary: #333333;
+  background: var(--primary-color);
 }
 
 body.light .about-section {
@@ -181,13 +183,13 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5rem 2rem;
+  padding: 1rem 2rem;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 100;
-  background: rgba(26, 26, 26, 0.6);
+  z-index: 1000;
+  background: rgba(26, 26, 26, 0.8);
   backdrop-filter: blur(10px);
 }
 
@@ -204,18 +206,7 @@ body.light header {
 
 /* Menu Hamburguer */
 .menu-toggle {
-  display: none;
-  background: none;
-  border: none;
-  color: var(--text-color);
-  font-size: 2rem;
-  cursor: pointer;
-  z-index: 1000;
-  transition: all 0.3s ease;
-}
-
-.menu-toggle:hover {
-  transform: scale(1.1);
+  display: none !important;
 }
 
 .nav-menu {
@@ -228,6 +219,7 @@ body.light header {
   color: var(--text-color);
   text-decoration: none;
   font-weight: 500;
+  font-size: 1rem;
   transition: all 0.3s ease;
   position: relative;
 }
@@ -277,6 +269,7 @@ body.light header {
   overflow: hidden;
   animation: profileFadeIn 1s ease-out forwards;
   margin-left: 1rem;
+  z-index: 1;
 }
 
 .profile-section::before {
@@ -682,6 +675,81 @@ body.light .animated-links li:hover ion-icon {
 
   .animated-links li a {
     height: 180px;
+    background: inherit;
+  }
+
+  /* Gradientes específicos para mobile */
+  .animated-links li:nth-child(1) a {
+    background: linear-gradient(
+        45deg,
+        rgba(100, 65, 165, 0.5),
+        rgba(143, 93, 183, 0.5)
+      ),
+      url("../assets/twitch-bg.jpg") center/cover !important;
+    background-size: 200% 200%, cover !important;
+  }
+
+  .animated-links li:nth-child(2) a {
+    background: linear-gradient(
+        45deg,
+        rgba(45, 45, 45, 0.5),
+        rgba(67, 67, 67, 0.5)
+      ),
+      url("../assets/portfolio-bg.png") center/cover !important;
+    background-size: 200% 200%, cover !important;
+  }
+
+  .animated-links li:nth-child(3) a {
+    background: linear-gradient(
+        45deg,
+        rgba(225, 48, 108, 0.5),
+        rgba(245, 96, 64, 0.5)
+      ),
+      url("../assets/instagram-bg.jpg") center/cover !important;
+    background-size: 200% 200%, cover !important;
+  }
+
+  /* Modo claro mobile */
+  body.light .animated-links li:nth-child(1) a {
+    background: linear-gradient(
+        45deg,
+        rgba(100, 65, 165, 0.3),
+        rgba(143, 93, 183, 0.3)
+      ),
+      url("../assets/twitch-bg.jpg") center/cover !important;
+  }
+
+  body.light .animated-links li:nth-child(2) a {
+    background: linear-gradient(
+        45deg,
+        rgba(45, 45, 45, 0.3),
+        rgba(67, 67, 67, 0.3)
+      ),
+      url("../assets/portfolio-bg.png") center/cover !important;
+  }
+
+  body.light .animated-links li:nth-child(3) a {
+    background: linear-gradient(
+        45deg,
+        rgba(225, 48, 108, 0.3),
+        rgba(245, 96, 64, 0.3)
+      ),
+      url("../assets/instagram-bg.jpg") center/cover !important;
+  }
+
+  .animated-links li a::before,
+  .animated-links li a::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+
+  .animated-links li a:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
   }
 
   .menu-toggle {
@@ -694,20 +762,35 @@ body.light .animated-links li:hover ion-icon {
     right: -100%;
     width: 250px;
     height: 100vh;
-    background: var(--secondary-color);
+    background: rgba(26, 26, 26, 0.95) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     flex-direction: column;
     padding: 80px 2rem 2rem;
     transition: 0.4s cubic-bezier(0.23, 1, 0.32, 1);
     box-shadow: -10px 0 30px rgba(0, 0, 0, 0.2);
-    z-index: 999;
+    z-index: 999999;
+  }
+
+  body.light .nav-menu {
+    background: rgba(255, 255, 255, 0.95) !important;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
   }
 
   .nav-menu.active {
     right: 0;
   }
 
-  header {
-    padding: 1rem 2rem;
+  .menu-toggle {
+    display: block;
+    position: fixed;
+    top: 1rem;
+    right: 2rem;
+    z-index: 1000000;
+  }
+
+  .profile-section {
+    z-index: 1;
   }
 
   .menu-toggle.active ion-icon[name="menu-outline"] {
@@ -1171,7 +1254,7 @@ body {
 /* Header Controls */
 .header-controls {
   display: flex;
-  gap: 1rem;
+  gap: 2rem;
   align-items: center;
 }
 
@@ -1243,12 +1326,12 @@ body.light #dark-mode-video {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.6);
   z-index: 1;
 }
 
 body.light .video-overlay {
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.6);
 }
 
 #particles-js {
@@ -1351,7 +1434,6 @@ header,
   word-spacing: 0.15em;
   text-align: center;
   opacity: 0;
-  animation-delay: 0.2s;
 }
 
 .about-section h3 {
@@ -1364,7 +1446,6 @@ header,
   animation: slideInLeft 0.8s ease-out forwards;
   text-align: center;
   opacity: 0;
-  animation-delay: 0.4s;
 }
 
 .about-section ul {
@@ -1766,12 +1847,69 @@ body.light .about-section li::before {
 .animated-links li a {
   position: relative;
   overflow: hidden;
-  background: linear-gradient(
-    45deg,
-    rgba(100, 65, 165, 1),
-    rgba(225, 48, 108, 1)
-  ) !important;
   transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Gradientes específicos para cada card */
+.animated-links li:nth-child(1) a {
+  background: linear-gradient(
+      45deg,
+      rgba(100, 65, 165, 0.5),
+      rgba(143, 93, 183, 0.5)
+    ),
+    url("../assets/twitch-bg.jpg") center/cover !important;
+  background-size: 200% 200%, cover !important;
+  animation: gradientBG 5s ease infinite;
+}
+
+.animated-links li:nth-child(2) a {
+  background: linear-gradient(
+      45deg,
+      rgba(45, 45, 45, 0.5),
+      rgba(67, 67, 67, 0.5)
+    ),
+    url("../assets/portfolio-bg.png") center/cover !important;
+  background-size: 200% 200%, cover !important;
+  animation: gradientBG 5s ease infinite;
+}
+
+.animated-links li:nth-child(3) a {
+  background: linear-gradient(
+      45deg,
+      rgba(225, 48, 108, 0.5),
+      rgba(245, 96, 64, 0.5)
+    ),
+    url("../assets/instagram-bg.jpg") center/cover !important;
+  background-size: 200% 200%, cover !important;
+  animation: gradientBG 5s ease infinite;
+}
+
+/* Modo claro */
+body.light .animated-links li:nth-child(1) a {
+  background: linear-gradient(
+      45deg,
+      rgba(100, 65, 165, 0.3),
+      rgba(143, 93, 183, 0.3)
+    ),
+    url("../assets/twitch-bg.jpg") center/cover !important;
+}
+
+body.light .animated-links li:nth-child(2) a {
+  background: linear-gradient(
+      45deg,
+      rgba(45, 45, 45, 0.3),
+      rgba(67, 67, 67, 0.3)
+    ),
+    url("../assets/portfolio-bg.png") center/cover !important;
+}
+
+body.light .animated-links li:nth-child(3) a {
+  background: linear-gradient(
+      45deg,
+      rgba(225, 48, 108, 0.3),
+      rgba(245, 96, 64, 0.3)
+    ),
+    url("../assets/instagram-bg.jpg") center/cover !important;
 }
 
 .animated-links li a::before {
@@ -1788,99 +1926,6 @@ body.light .about-section li::before {
   );
   transform: translateX(-100%);
   transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-.animated-links li a:hover::before {
-  transform: translateX(100%);
-}
-
-.animated-links li a:hover {
-  transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-}
-
-/* Animação para os ícones */
-.animated-links li ion-icon {
-  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-  animation: iconFloat 2s ease-in-out infinite;
-}
-
-@keyframes iconFloat {
-  0%,
-  100% {
-    transform: translate(-50%, -50%);
-  }
-  50% {
-    transform: translate(-50%, -60%);
-  }
-}
-
-/* Gradientes específicos para cada card */
-.animated-links li:nth-child(1) a {
-  background: linear-gradient(
-      45deg,
-      rgba(100, 65, 165, 0.8),
-      rgba(143, 93, 183, 0.8),
-      rgba(100, 65, 165, 0.8)
-    ),
-    url("../assets/twitch-bg.jpg") center/cover !important;
-  background-size: 200% 200%, cover !important;
-  animation: gradientBG 5s ease infinite;
-}
-
-.animated-links li:nth-child(2) a {
-  background: linear-gradient(
-      45deg,
-      rgba(45, 45, 45, 0.8),
-      rgba(67, 67, 67, 0.8),
-      rgba(45, 45, 45, 0.8)
-    ),
-    url("../assets/portfolio-bg.png") center/cover !important;
-  background-size: 200% 200%, cover !important;
-  animation: gradientBG 5s ease infinite;
-}
-
-.animated-links li:nth-child(3) a {
-  background: linear-gradient(
-      45deg,
-      rgba(225, 48, 108, 0.8),
-      rgba(245, 96, 64, 0.8),
-      rgba(225, 48, 108, 0.8)
-    ),
-    url("../assets/instagram-bg.jpg") center/cover !important;
-  background-size: 200% 200%, cover !important;
-  animation: gradientBG 5s ease infinite;
-}
-
-/* Modo claro */
-body.light .animated-links li:nth-child(1) a {
-  background: linear-gradient(
-      45deg,
-      rgba(100, 65, 165, 0.7),
-      rgba(143, 93, 183, 0.7),
-      rgba(100, 65, 165, 0.7)
-    ),
-    url("../assets/twitch-bg.jpg") center/cover !important;
-}
-
-body.light .animated-links li:nth-child(2) a {
-  background: linear-gradient(
-      45deg,
-      rgba(45, 45, 45, 0.7),
-      rgba(67, 67, 67, 0.7),
-      rgba(45, 45, 45, 0.7)
-    ),
-    url("../assets/portfolio-bg.png") center/cover !important;
-}
-
-body.light .animated-links li:nth-child(3) a {
-  background: linear-gradient(
-      45deg,
-      rgba(225, 48, 108, 0.7),
-      rgba(245, 96, 64, 0.7),
-      rgba(225, 48, 108, 0.7)
-    ),
-    url("../assets/instagram-bg.jpg") center/cover !important;
 }
 
 @keyframes gradientBG {

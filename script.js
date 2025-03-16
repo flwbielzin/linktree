@@ -46,40 +46,6 @@ function toggleMode() {
   }
 }
 
-// Menu Hamburguer
-const menuToggle = document.querySelector(".menu-toggle");
-const navMenu = document.querySelector(".nav-menu");
-const body = document.body;
-
-menuToggle.addEventListener("click", () => {
-  menuToggle.classList.toggle("active");
-  navMenu.classList.toggle("active");
-  body.classList.toggle("menu-open");
-});
-
-// Fechar menu ao clicar em um link
-const navLinks = document.querySelectorAll(".nav-menu a");
-navLinks.forEach((link) => {
-  link.addEventListener("click", () => {
-    menuToggle.classList.remove("active");
-    navMenu.classList.remove("active");
-    body.classList.remove("menu-open");
-  });
-});
-
-// Fechar menu ao clicar fora
-document.addEventListener("click", (e) => {
-  if (
-    !navMenu.contains(e.target) &&
-    !menuToggle.contains(e.target) &&
-    navMenu.classList.contains("active")
-  ) {
-    menuToggle.classList.remove("active");
-    navMenu.classList.remove("active");
-    body.classList.remove("menu-open");
-  }
-});
-
 // Animações de scroll
 ScrollReveal().reveal(".profile-section", {
   delay: 200,
@@ -172,7 +138,7 @@ function checkScroll() {
     if (linkTop < triggerBottom) {
       setTimeout(() => {
         link.classList.add("reveal");
-      }, index * 200); // Adiciona delay para cada item
+      }, index * 200);
     }
   });
 }
