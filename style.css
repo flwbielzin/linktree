@@ -268,8 +268,13 @@ body.light header {
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
   overflow: hidden;
   animation: profileFadeIn 1s ease-out forwards;
-  margin-left: 1rem;
+  margin: 0 auto;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
 }
 
 .profile-section::before {
@@ -308,12 +313,15 @@ body.light header {
 
 .social-icons {
   display: flex;
-  gap: 1rem;
-  margin-top: 2rem;
-  transform: translateY(20px);
-  opacity: 0;
-  animation: slideUpFade 0.5s ease forwards;
-  animation-delay: 0.6s;
+  gap: 0.4rem;
+  padding: 0.4rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  max-width: 250px;
+  margin: 0 auto;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
 }
 
 @keyframes profileFadeIn {
@@ -353,6 +361,8 @@ body.light header {
 .profile-info {
   margin-bottom: 1.5rem;
   position: relative;
+  width: 100%;
+  text-align: center;
 }
 
 .profile-info::after {
@@ -379,11 +389,12 @@ body.light header {
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.1);
   color: var(--text-color);
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   position: relative;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
 }
 
 .social-icons a:hover {
@@ -413,10 +424,11 @@ body.light header {
 
 .profile-image {
   width: 100%;
+  max-width: 200px;
   aspect-ratio: 1;
   border-radius: 20px;
   overflow: hidden;
-  margin-bottom: 2rem;
+  margin: 0 auto 1rem;
 }
 
 .profile-image img {
@@ -832,6 +844,27 @@ body.light .animated-links li:hover ion-icon {
   }
   .nav-menu a:nth-child(4) {
     transition-delay: 0.5s;
+  }
+
+  .social-icons {
+    gap: 0.4rem;
+    padding: 0.4rem;
+  }
+
+  .social-icons a {
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
+  }
+
+  .profile-image {
+    max-width: 350px;
+  }
+
+  .profile-section {
+    margin: 0 auto;
+    padding: 1.5rem;
+    max-width: 400px;
   }
 }
 
